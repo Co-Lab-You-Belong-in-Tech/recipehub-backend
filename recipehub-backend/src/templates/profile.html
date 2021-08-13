@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My Profile</h1>
+    <h3>{{first_name|capfirst|upper}}{{last_name|capfirst|upper}}</h3>
+
+    <p>
+        <h3>Saved Recipes</h3> 
+        {{ savedrecipes }}
+    </p>
+
+    <h3>Interests</h3>
+    <ul>
+        {% for item in interests %}
+            <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

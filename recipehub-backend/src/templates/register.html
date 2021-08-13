@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Sign Up</h1>
+    <div class="container">
+        <form class="site-form" method="POST">
+            {% csrf_token %}
+
+            {{ form.email.label }}
+            {{ form.email }}
+
+            <br><br>
+
+            {{ form.first_name.label }}
+            {{ form.first_name }}
+
+            <br><br>
+
+            {{ form.last_name.label }}
+            {{ form.last_name }}
+
+            <br><br>
+
+            {{ form.username.label }}
+            {{ form.username }}
+
+            <br><br>
+            
+            {{ form.password1.label }}
+            {{ form.password1 }}
+
+            <br><br>
+
+            {{ form.password2.label }}
+            {{ form.password2 }}
+
+            <br><br>
+
+            <input type="submit" value="REGISTER">
+                
+            <br><br>
+            <body>Already have an account? <a href="{% url 'login' %}">Log In!</a></body>
+        </form>
+
+    </div>
+
+
+{% endblock %}

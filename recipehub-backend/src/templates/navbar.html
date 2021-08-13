@@ -1,0 +1,34 @@
+<nav>
+    {% url 'home' as home_url %} 
+    <span>
+        {% if request.path == home_url %}Home{% else %}<a href="{% url 'home' %}">Home</a>{% endif %}
+    </span>
+
+    {% url 'myrecipes' as myrecipes_url %}
+    <span>
+        {% if user.is_authenticated %}
+            {% if request.path == myrecipes_url %}My Recipes{% else %}<a href="{% url 'myrecipes' %}">My Recipes</a>{% endif %}
+        {% endif %}
+    </span>
+
+    <span style="float:right">
+        {% if user.is_authenticated %}
+            {% url 'profile' as profile_url %}
+            <span>
+                Welcome, {{user.first_name}} {{user.last_name}}
+            </span>
+            <br>
+            <span>
+                <a href="{% url 'profile' %}">View Profile</a>
+            </span>
+            <br>
+            <span>
+                <a href="{% url 'logout' %}">Log Out</a>
+            </span>
+        {% else %}
+            <span>
+                <a href="{% url 'login' %}">Log In / Sign Up</a>
+            </span>
+        {% endif %}
+    </span>
+</nav>
