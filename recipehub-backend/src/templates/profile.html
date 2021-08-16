@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>My Profile</h1>
-    <h3>{{first_name|capfirst|upper}}{{last_name|capfirst|upper}}</h3>
+    <h1>
+        {{ user.get_full_name }} (@{{user.username}})
+    </h1>
 
-    <p>
-        <h3>Saved Recipes</h3> 
-        {{ savedrecipes }}
-    </p>
+    {% with profile=user.profile %}
+        {% if profile %}
+            <div>
+                {{ profile.bio|default:"" }}
+            </div>
+            <br>><br>
+            <div>
+                <h3>Interests</h3>
+                {% for interest in profile.interests.all %}
+                    <li>{{interest}}</li>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
 
-    <h3>Interests</h3>
-    <ul>
-        {% for item in interests %}
-            <li>{{item}}</li>
-        {% endfor %}
-    </ul>
+
 {% endblock %}

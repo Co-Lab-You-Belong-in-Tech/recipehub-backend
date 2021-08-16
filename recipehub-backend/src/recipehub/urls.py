@@ -17,13 +17,12 @@ from django.contrib import admin
 from django.urls import path
 
 from pages.views import homepage_view, login_view, recipelist_view, register_view, ProfileView
-from myrecipes.views import myrecipes_detail_view 
 from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
     path('', homepage_view, name='home'),
-    path('myrecipes/', myrecipes_detail_view, name='myrecipes'),
+    path('myrecipes/', recipelist_view, name='myrecipes'),
     path('admin/', admin.site.urls),
     path('profile/', ProfileView.as_view(), name='profile'),
 
