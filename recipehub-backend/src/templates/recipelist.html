@@ -3,5 +3,17 @@
 {% block content %}
     <h1>My Recipes</h1>
 
-    <p>This is a template</p>
+    {% with profile=user.profile %}
+        {% if profile %}
+            {% for recipe in profile.recipes.all%}
+                    {{ recipe.title }}
+                    <br>
+                    {% with link=recipe.link|default:"" %}
+                        <a href="{{link}}">{{ link }}</a>
+                    {% endwith %}
+                <br><br>
+            {% endfor %}
+        {% endif %} 
+    {% endwith %}
+
 {% endblock %}

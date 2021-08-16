@@ -10,6 +10,10 @@ class UserInterest(models.Model):
     def __str__(self):
         return (self.name)
 
+class UserRecipes(models.Model):
+    title = models.CharField(max_length = 120)
+    link = models.URLField(max_length = 200)
+
 class UserProfile(models.Model):
     # owner
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name = "profile")
@@ -20,7 +24,4 @@ class UserProfile(models.Model):
     # details
     bio = models.CharField(max_length=500, blank=True, null=True)
     interests = models.ManyToManyField(UserInterest, blank=True)
-
-class UserRecipes(models.Model):
-    title = models.CharField(max_length = 120)
-    link = models.URLField(max_length = 200)
+    recipes = models.ManyToManyField(UserRecipes, blank=True)

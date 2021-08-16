@@ -14,11 +14,7 @@ def homepage_view(request, *args, **kwargs):
 
 
 def login_view(request, *args, **kwargs):
-    return render(request, "recipelist.html", {})
-
-
-def recipelist_view(request, *args, **kwargs):
-    return render(request, "recipelist.html", {})
+    return render(request, "login.html", {})
 
 
 def register_view(request):
@@ -33,3 +29,7 @@ def register_view(request):
 
 class ProfileView(TemplateView):
     template_name = "profile.html"
+
+
+class RecipeView(TemplateView):
+    template_name = "recipelist.html"
